@@ -121,12 +121,22 @@
   .pour .alt .alt-list{font-size:.98rem;color:var(--ink)}
   .pour.matcha .alt .alt-list{color:var(--jade-mid)}
   .pour.coffee .alt .alt-list{color:var(--java-mid)}
+  /* REFRESHERS — full-width card under matcha/coffee, fruit-coral tint */
+  .pour.refresh{grid-column:1/-1;background:linear-gradient(160deg,rgba(214,104,82,.17),rgba(214,104,82,.04))}
+  .pour.refresh h3,.pour.refresh .drink b{color:#9E3F2C}
+  .refresh-list{display:grid;grid-template-columns:repeat(3,1fr);gap:0 1.6rem}
+  /* LIMITED TIME — seasonal drinks, styled to pop against the jade/java palette without breaking it */
+  .drink.seasonal{position:relative;background:linear-gradient(160deg,rgba(217,143,43,.16),rgba(217,143,43,.04));border:1px solid rgba(217,143,43,.4);border-radius:12px;padding:.95rem 1.1rem .85rem;margin-bottom:.7rem}
+  .drink.seasonal:last-of-type{margin-bottom:0}
+  .ltd-badge{display:inline-flex;align-items:center;gap:.3rem;font-family:"Hanken Grotesk",sans-serif;font-weight:700;font-size:.64rem;letter-spacing:.15em;text-transform:uppercase;color:#4A2E06;background:linear-gradient(135deg,#F5C46E,#DE9A3C);padding:.3rem .7rem;border-radius:999px;box-shadow:0 8px 18px -8px rgba(217,143,43,.7);margin-bottom:.5rem}
   /* ENHANCEMENTS */
   .enhancements{margin-top:4rem;padding-top:3.2rem;border-top:1px solid var(--line)}
   .enh-head{text-align:center;margin-bottom:2.6rem}
   .enh-sub{font-family:"Pinyon Script",cursive;font-size:1.55rem;color:var(--java-mid);margin-top:.15rem}
-  .enh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem 1.2rem}
-  .enh{text-align:center;padding:1.2rem 1rem}
+  .enh-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.6rem 1.2rem}
+  .enh{text-align:center;padding:1.2rem 1rem;grid-column:span 2}
+  /* 5 items in rows of 3: center the short last row */
+  .enh:nth-child(3n+1):nth-last-child(2){grid-column:2/span 2}
   .enh-ic{display:inline-flex;width:58px;height:58px;align-items:center;justify-content:center;border-radius:50%;border:1.5px solid var(--line);color:var(--jade);margin-bottom:.9rem;background:rgba(140,154,106,.08)}
   .enh-ic svg{width:26px;height:26px}
   .enh h4{font-family:"Fraunces",serif;font-weight:600;font-size:1.08rem;color:var(--java);margin-bottom:.35rem}
@@ -153,10 +163,27 @@
   .embed-slot span{font-size:.85rem;color:var(--muted)}
   .ig-link{display:inline-block;margin-top:1.6rem;text-align:center;width:100%;color:var(--java);font-weight:600;text-decoration:none}
   .ig-link:hover{text-decoration:underline}
-  .coming-soon{text-align:center;padding:3.6rem 1.5rem;border-radius:var(--r);border:1px solid var(--line);background:linear-gradient(135deg,rgba(140,154,106,.14),rgba(122,78,40,.10))}
-  .cs-badge{display:inline-block;font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--paper);background:var(--jade);padding:.42rem 1.05rem;border-radius:999px;margin-bottom:1.1rem}
-  .coming-soon p{color:var(--muted);max-width:44ch;margin:0 auto 1.6rem;font-size:1rem}
-  .cs-social{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap}
+  .cs-social{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+  /* VIDEO GALLERY — self-hosted clips, play/pause as they scroll into view (see script at bottom of page) */
+  .video-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.6rem;max-width:760px;margin:0 auto}
+  .clip{position:relative;border-radius:var(--r);overflow:hidden;background:var(--ink);box-shadow:var(--shadow)}
+  .clip video{display:block;width:100%;max-height:78vh;object-fit:cover}
+  /* VIDEO FEATURE — vertical clip in an arched "café window", copy beside it */
+  .vid-feature{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,6vw,5rem);align-items:center;max-width:980px;margin:0 auto}
+  .arch-wrap{position:relative;width:min(360px,100%);margin-inline:auto}
+  .arch-wrap::before{content:"";position:absolute;inset:8% -14% -6% -14%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(140,154,106,.30),rgba(140,154,106,0) 68%);z-index:0}
+  .arch{position:relative;z-index:1;padding:10px;border:1.5px solid var(--jade-mid);border-radius:999px 999px 22px 22px;background:var(--panel);box-shadow:var(--shadow)}
+  .arch .clip{border-radius:999px 999px 14px 14px;box-shadow:none;aspect-ratio:9/16}
+  .arch .clip video{height:100%;max-height:none}
+  .snd{position:absolute;right:14px;bottom:14px;z-index:2;width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;background:rgba(247,239,230,.88);color:var(--jade);backdrop-filter:blur(6px);box-shadow:0 6px 16px -6px rgba(56,41,28,.45);transition:transform .2s}
+  .snd:hover{transform:scale(1.06)}
+  .snd svg{width:19px;height:19px}
+  .snd .on{display:none}.snd[aria-pressed="true"] .on{display:block}.snd[aria-pressed="true"] .off{display:none}
+  .vid-copy .eyebrow{display:block;margin-bottom:.8rem}
+  .vid-copy h2{font-size:clamp(2.1rem,4.6vw,3.2rem);color:var(--jade);margin-bottom:.4rem}
+  .vid-copy .script{font-family:"Pinyon Script",cursive;font-size:clamp(1.7rem,3.4vw,2.3rem);color:var(--java-mid);line-height:1.2;margin-bottom:1.2rem}
+  .vid-copy p.body{color:var(--ink);max-width:40ch;margin-bottom:.4rem}
+  .vid-copy .cs-social{justify-content:flex-start}
 
   /* MAKERS */
   .makers{display:grid;grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:center}
@@ -222,8 +249,14 @@
     .nav-links.open{transform:none}
     .nav-links a{font-size:1.15rem}
     .nav-toggle{display:block;z-index:101}
-    .hero-grid,.pours,.cards,.makers,.social-row,.fgrid{grid-template-columns:1fr}
-    .enh-grid{grid-template-columns:repeat(2,1fr)}
+    .hero-grid,.pours,.cards,.makers,.social-row,.fgrid,.video-gallery,.refresh-list,.vid-feature{grid-template-columns:1fr}
+    .vid-copy{text-align:center}
+    .vid-copy p.body{margin-inline:auto}
+    .vid-copy .cs-social{justify-content:center}
+    .arch-wrap{width:min(300px,78vw)}
+    .enh-grid{grid-template-columns:repeat(4,1fr)}
+    .enh:nth-child(3n+1):nth-last-child(2){grid-column:span 2}
+    .enh:nth-child(odd):last-child{grid-column:2/span 2}
     .hero{padding:2.4rem 0 3rem}
     .hero-grid{gap:1.4rem;text-align:center}
     .hero-copy{order:2}
@@ -312,7 +345,7 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow" style="font-size:1.6rem;letter-spacing:.14em">The Menu</p>
-      <p>Each event is served with three signature matcha and three iced-coffee drinks — every one fully customizable, with dairy-free milks always available.</p>
+      <p>Each event is served with three signature matcha, three iced-coffee, and three refresher drinks — every one fully customizable, with dairy-free milks always available.</p>
     </div>
     <div class="pours">
       <div class="pour matcha reveal">
@@ -331,6 +364,15 @@
         <div class="drink"><b>Iced Hazelnut Latte</b><span>Espresso, milk, and toasted hazelnut served over ice.</span></div>
         <p class="alt"><span class="alt-label">Alternate flavors</span><span class="alt-list">Pistachio · Spanish Latte · White Mocha</span></p>
       </div>
+      <div class="pour refresh reveal">
+        <span class="kicker">Something Fruity</span>
+        <h3>Refreshers</h3>
+        <div class="refresh-list">
+          <div class="drink"><b>Mango Passion Fruit</b><span>Tropical mango and tangy passion fruit served over ice.</span></div>
+          <div class="drink"><b>Watermelon Cucumber Mint</b><span>Sweet watermelon with crisp cucumber and fresh mint.</span></div>
+          <div class="drink"><b>Dragon Fruit Lime</b><span>Vibrant dragon fruit brightened with a squeeze of lime.</span></div>
+        </div>
+      </div>
     </div>
 
     <div class="enhancements reveal">
@@ -343,11 +385,6 @@
           <span class="enh-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
           <h4>Additional Service Hour</h4>
           <p>Extend your coffee &amp; matcha service time.</p>
-        </div>
-        <div class="enh">
-          <span class="enh-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.7 8h10.6l-1 11.4a1.5 1.5 0 0 1-1.5 1.4H9.2a1.5 1.5 0 0 1-1.5-1.4L6.7 8Z"/><path d="M5.5 8h13"/><path d="M13.3 3l-1.6 5"/></svg></span>
-          <h4>Refreshers Station</h4>
-          <p>Choose two refreshing flavors for your guests.</p>
         </div>
         <div class="enh">
           <span class="enh-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4.8 12h14.4a7.2 7.2 0 0 1-7.2 7 7.2 7.2 0 0 1-7.2-7Z"/><circle cx="12" cy="7.6" r="3"/></svg></span>
@@ -378,19 +415,31 @@
 <!-- GALLERY + SOCIAL -->
 <section class="gallery" id="gallery">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">The vibe</p>
-      <h2>From the cart</h2>
-      <p>Photos from our events are on the way. Follow along on Instagram &amp; TikTok to see the setup, the drinks, and the celebrations as we pour them.</p>
-    </div>
-
-    <!-- COMING SOON: when you have event photos, swap this block for an image grid. -->
-    <div class="coming-soon reveal">
-      <span class="cs-badge">Coming Soon</span>
-      <p>We're capturing our very first events now — check back shortly, or follow us for the latest.</p>
-      <div class="cs-social">
-        <a class="btn btn-ghost" href="https://instagram.com/jadeandjava1" target="_blank" rel="noopener">Instagram</a>
-        <a class="btn btn-ghost" href="https://www.tiktok.com/@jadeandjava1" target="_blank" rel="noopener">TikTok</a>
+    <!-- VIDEO FEATURE: the event clip plays inside an arched frame, with copy
+         beside it. The <video> only gets its src set (and starts playing) once
+         it scrolls into view, and pauses when it scrolls out — see the
+         IntersectionObserver in the script at the bottom of the page. -->
+    <div class="vid-feature" id="videoGallery">
+      <div class="arch-wrap reveal">
+        <div class="arch">
+          <div class="clip">
+            <video muted loop playsinline preload="none" data-src="media/jj-event-1.mp4"></video>
+          </div>
+          <button class="snd" type="button" aria-pressed="false" aria-label="Turn sound on">
+            <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+            <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="vid-copy reveal">
+        <p class="eyebrow">The vibe</p>
+        <h2>From the cart</h2>
+        <p class="script">Matcha · Coffee · Memories</p>
+        <p class="body">Straight from our Instagram &amp; TikTok — the setup, the drinks, and the celebrations as we pour them.</p>
+        <div class="cs-social">
+          <a class="btn btn-ghost" href="https://instagram.com/jadeandjava1" target="_blank" rel="noopener">More on Instagram</a>
+          <a class="btn btn-ghost" href="https://www.tiktok.com/@jadeandjava1" target="_blank" rel="noopener">More on TikTok</a>
+        </div>
       </div>
     </div>
   </div>
@@ -483,7 +532,6 @@
               <summary data-placeholder="Select any that interest you">Select any that interest you</summary>
               <div class="multi-opts">
                 <label class="opt"><input type="checkbox" name="enhancements" value="Additional Service Hour"><span>Additional Service Hour</span></label>
-                <label class="opt"><input type="checkbox" name="enhancements" value="Refreshers Station"><span>Refreshers Station</span></label>
                 <label class="opt"><input type="checkbox" name="enhancements" value="Affogato Bar"><span>Affogato Bar</span></label>
                 <label class="opt"><input type="checkbox" name="enhancements" value="Decaf Coffee"><span>Decaf Coffee</span></label>
                 <label class="opt"><input type="checkbox" name="enhancements" value="Canned Matcha & Coffee"><span>Canned Matcha &amp; Coffee</span></label>
@@ -533,6 +581,36 @@
 
   const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  /* VIDEO GALLERY: each clip only loads its file once it's about to scroll
+     into view (data-src -> src), then plays while visible and pauses once
+     it scrolls back out, so it behaves like an Instagram/TikTok feed. */
+  const clipVideos=document.querySelectorAll('#videoGallery video');
+  if(clipVideos.length){
+    const clipIO=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        const v=entry.target;
+        if(entry.isIntersecting){
+          if(!v.src && v.dataset.src){ v.src=v.dataset.src; }
+          v.play().catch(()=>{});
+        } else {
+          v.pause();
+        }
+      });
+    },{threshold:.5});
+    clipVideos.forEach(v=>clipIO.observe(v));
+  }
+
+  /* sound toggle on the arched clip — video starts muted (browsers require it for autoplay) */
+  document.querySelectorAll('.arch .snd').forEach(btn=>{
+    const v=btn.closest('.arch').querySelector('video');
+    btn.addEventListener('click',()=>{
+      v.muted=!v.muted;
+      btn.setAttribute('aria-pressed',String(!v.muted));
+      btn.setAttribute('aria-label',v.muted?'Turn sound on':'Turn sound off');
+      if(!v.muted) v.play().catch(()=>{});
+    });
+  });
 
   /* enhancements multi-select: show how many are chosen in the summary */
   const enh=document.getElementById('enhMulti');
